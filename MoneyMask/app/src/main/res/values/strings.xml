@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MoneyMask</string>
+    <string name="br_currency_label">R$</string>
+    <string name="hide_button_label">Esconder</string>
+    <string name="show_button_label">Exibir</string>
+</resources>
