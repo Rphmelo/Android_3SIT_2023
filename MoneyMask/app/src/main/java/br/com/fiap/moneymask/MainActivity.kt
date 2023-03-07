@@ -13,8 +13,9 @@ class MainActivity : AppCompatActivity() {
 //    val moneyValue: TextView = findViewById(R.id.money_value)
     lateinit var binding: ActivityMainBinding
     private val mask: String = "*******"
-    private val value: String? = null
-    private val isShowing: Boolean = true
+    private var value: String? = null
+//    private var isShowing: Boolean = true
+    private var buttonState: ButtonState = ButtonState.HIDE_VALUE
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,9 +27,36 @@ class MainActivity : AppCompatActivity() {
 //        money_currency.setText("Teste")
 //        money_value.setText("Teste")
         binding = ActivityMainBinding.inflate(layoutInflater)
-        binding.toggleButton.setOnClickListener {
-
-        }
         setContentView(binding.root)
+        clickToggleButton()
+    }
+
+    fun clickToggleButton() {
+        value = binding.moneyValue.text.toString()
+        binding.toggleButton.setOnClickListener {
+            when(buttonState) {
+                ButtonState.HIDE_VALUE -> {
+                    binding.moneyValue.text = mask
+                    buttonState = ButtonState.SHOW_VALUE
+                }
+                ButtonState.SHOW_VALUE -> {
+                    binding.moneyValue.text = value
+                    buttonState = ButtonState.HIDE_VALUE
+                }
+            }
+            binding.toggleButton.text = getString(buttonState.buttonTextResId)
+//            if(isShowing){
+//                binding.moneyValue.text = value
+//                isShowing = false
+//            } else {
+//                binding.moneyValue.text = mask
+//                isShowing = true
+//            }
+//            binding.toggleButton.text = if(isShowing) {
+//                getString(R.string.show_button_label)
+//            } else {
+//                getString(R.string.hide_button_label)
+//            }
+        }
     }
 }
