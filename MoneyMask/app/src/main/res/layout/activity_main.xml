@@ -13,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/br_currency_label"
+        android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="60.000,00"
+        android:textSize="60sp"
         app:layout_constraintStart_toEndOf="@id/money_currency"
         app:layout_constraintTop_toTopOf="@+id/money_currency"
         />

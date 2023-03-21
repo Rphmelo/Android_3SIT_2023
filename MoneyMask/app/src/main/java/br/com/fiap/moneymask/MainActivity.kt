@@ -14,8 +14,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private val mask: String = "*******"
     private var value: String? = null
-//    private var isShowing: Boolean = true
-    private var buttonState: ButtonState = ButtonState.HIDE_VALUE
+    private var isShowing: Boolean = true
+//    private var buttonState: ButtonState = ButtonState.HIDE_VALUE
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,32 +31,63 @@ class MainActivity : AppCompatActivity() {
         clickToggleButton()
     }
 
+    override fun onStart() {
+        super.onStart()
+        showValue()
+        binding.root.setBackgroundColor(resources.getColor(R.color.black))
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showValue()
+        binding.root.setBackgroundColor(resources.getColor(R.color.purple_200))
+    }
+
+    override fun onPause() {
+        super.onPause()
+        hideValue()
+        binding.root.setBackgroundColor(resources.getColor(R.color.teal_200))
+    }
+
+    override fun onStop() {
+        super.onStop()
+        hideValue()
+        binding.root.setBackgroundColor(resources.getColor(R.color.white))
+    }
+
+
     fun clickToggleButton() {
         value = binding.moneyValue.text.toString()
         binding.toggleButton.setOnClickListener {
-            when(buttonState) {
-                ButtonState.HIDE_VALUE -> {
-                    binding.moneyValue.text = mask
-                    buttonState = ButtonState.SHOW_VALUE
-                }
-                ButtonState.SHOW_VALUE -> {
-                    binding.moneyValue.text = value
-                    buttonState = ButtonState.HIDE_VALUE
-                }
+//            when(buttonState) {
+//                ButtonState.HIDE_VALUE -> {
+//                    binding.moneyValue.text = mask
+//                    buttonState = ButtonState.SHOW_VALUE
+//                }
+//                ButtonState.SHOW_VALUE -> {
+//                    binding.moneyValue.text = value
+//                    buttonState = ButtonState.HIDE_VALUE
+//                }
+//            }
+//            binding.toggleButton.text = getString(buttonState.buttonTextResId)
+            if(isShowing){
+                showValue()
+            } else {
+                hideValue()
             }
-            binding.toggleButton.text = getString(buttonState.buttonTextResId)
-//            if(isShowing){
-//                binding.moneyValue.text = value
-//                isShowing = false
-//            } else {
-//                binding.moneyValue.text = mask
-//                isShowing = true
-//            }
-//            binding.toggleButton.text = if(isShowing) {
-//                getString(R.string.show_button_label)
-//            } else {
-//                getString(R.string.hide_button_label)
-//            }
         }
+    }
+
+    private fun showValue() {
+        binding.moneyValue.text = value
+        isShowing = false
+        binding.toggleButton.text = getString(R.string.show_button_label)
+
+    }
+
+    private fun hideValue() {
+        binding.moneyValue.text = mask
+        isShowing = true
+        binding.toggleButton.text = getString(R.string.hide_button_label)
     }
 }
