@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Raphael_Melo_RM12345</string>
+    <string name="option_value">Qual sistema operacional você prefere?</string>
+    <string name="ios_value">IOS</string>
+    <string name="android_value">Android</string>
+</resources>
