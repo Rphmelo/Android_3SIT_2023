@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ChatGPT</string>
+    <string name="button_go_to_chat_label">Ir para chat</string>
+    <string name="button_share_message_label">Compartilhar</string>
+    <string name="message_hint">Mensagem</string>
+    <string name="button_send_message_label">Enviar</string>
+</resources>
