@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Countries</string>
+    <string name="country_name_label">Digite o nome</string>
+    <string name="country_capital_label">Digite a capital</string>
+    <string name="register_button_text">Cadastrar</string>
 </resources>
