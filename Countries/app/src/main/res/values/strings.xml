@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Countries</string>
+    <string name="register_button_text">Cadastrar</string>
+    <string name="register_update_country_fragment_label">Cadastrar e Atualizar Países</string>
+    <string name="countries_fragment_label">Lista de Países</string>
+    <string name="back_to_countries_label">Voltar Para Lista</string>
+    <string name="country_name_label">Nome</string>
+    <string name="country_capital_label">Capital</string>
+    <string name="country_language_label">Idioma</string>
+    <string name="country_currency_label">Moeda</string>
+    <string name="country_location_label">Localização</string>
+    <string name="register_country_button_label">Cadastrar</string>
 </resources>

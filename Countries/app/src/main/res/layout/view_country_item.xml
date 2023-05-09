@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardElevation="@dimen/spacing_xs"
+    app:cardCornerRadius="@dimen/spacing_xs"
+    android:layout_marginTop="@dimen/spacing_sm"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/spacing_sm"
+        >
+
+        <TextView
+            android:id="@+id/countryNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/country_name_label"
+            android:layout_marginStart="@dimen/spacing_xs"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/TextAppearance.AppCompat.Body2"
+            />
+
+        <TextView
+            android:id="@+id/countryNameValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Description"
+            android:layout_marginStart="@dimen/spacing_sm"
+            app:layout_constraintStart_toEndOf="@+id/countryNameLabel"
+            app:layout_constraintEnd_toStartOf="@id/iconUpdate"
+            app:layout_constraintTop_toTopOf="@+id/countryNameLabel"
+            app:layout_constraintBottom_toBottomOf="@+id/countryNameLabel"
+            style="@style/TextAppearance.AppCompat.Caption"
+            />
+
+        <TextView
+            android:id="@+id/countryCapitalLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/country_capital_label"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:layout_marginStart="@dimen/spacing_xs"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/countryNameLabel"
+            style="@style/TextAppearance.AppCompat.Body2"
+            />
+
+        <TextView
+            android:id="@+id/countryCapitalValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Description"
+            android:layout_marginStart="@dimen/spacing_sm"
+            app:layout_constraintStart_toEndOf="@+id/countryCapitalLabel"
+            app:layout_constraintEnd_toStartOf="@id/iconUpdate"
+            app:layout_constraintTop_toTopOf="@+id/countryCapitalLabel"
+            app:layout_constraintBottom_toBottomOf="@+id/countryCapitalLabel"
+            style="@style/TextAppearance.AppCompat.Caption"
+            />
+
+        <TextView
+            android:id="@+id/countryCurrencyLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/country_currency_label"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:layout_marginStart="@dimen/spacing_xs"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/countryCapitalLabel"
+            style="@style/TextAppearance.AppCompat.Body2"
+            />
+
+        <TextView
+            android:id="@+id/countryCurrencyValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Description"
+            android:layout_marginStart="@dimen/spacing_sm"
+            app:layout_constraintStart_toEndOf="@+id/countryCurrencyLabel"
+            app:layout_constraintEnd_toStartOf="@id/iconUpdate"
+            app:layout_constraintTop_toTopOf="@+id/countryCurrencyLabel"
+            app:layout_constraintBottom_toBottomOf="@+id/countryCurrencyLabel"
+            style="@style/TextAppearance.AppCompat.Caption"
+            />
+
+        <TextView
+            android:id="@+id/countryLanguageLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/country_language_label"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:layout_marginStart="@dimen/spacing_xs"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/countryCurrencyLabel"
+            style="@style/TextAppearance.AppCompat.Body2"
+            />
+
+        <TextView
+            android:id="@+id/countryLanguageValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Description"
+            android:layout_marginStart="@dimen/spacing_sm"
+            app:layout_constraintStart_toEndOf="@+id/countryLanguageLabel"
+            app:layout_constraintEnd_toStartOf="@id/iconDelete"
+            app:layout_constraintTop_toTopOf="@+id/countryLanguageLabel"
+            app:layout_constraintBottom_toBottomOf="@+id/countryLanguageLabel"
+            style="@style/TextAppearance.AppCompat.Caption"
+            />
+
+        <TextView
+            android:id="@+id/countryLocationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/country_location_label"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:layout_marginStart="@dimen/spacing_xs"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/countryLanguageLabel"
+            style="@style/TextAppearance.AppCompat.Body2"
+            />
+
+        <TextView
+            android:id="@+id/countryLocationValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Description"
+            android:layout_marginStart="@dimen/spacing_sm"
+            app:layout_constraintStart_toEndOf="@+id/countryLocationLabel"
+            app:layout_constraintEnd_toStartOf="@id/iconDelete"
+            app:layout_constraintTop_toTopOf="@+id/countryLocationLabel"
+            app:layout_constraintBottom_toBottomOf="@+id/countryLocationLabel"
+            style="@style/TextAppearance.AppCompat.Caption"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iconUpdate"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            app:srcCompat="@drawable/ic_edit"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="@dimen/spacing_xs"
+            android:layout_marginEnd="@dimen/spacing_xs"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iconDelete"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            app:srcCompat="@drawable/ic_delete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="@dimen/spacing_xs"
+            android:layout_marginEnd="@dimen/spacing_xs"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
