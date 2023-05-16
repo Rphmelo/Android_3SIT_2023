@@ -10,4 +10,5 @@
     <string name="country_currency_label">Moeda</string>
     <string name="country_location_label">Localização</string>
     <string name="register_country_button_label">Cadastrar</string>
+    <string name="register_success_message">País %s cadastrado com sucesso!</string>
 </resources>
