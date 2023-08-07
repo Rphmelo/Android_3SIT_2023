@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.fiap.countries.databinding.ViewCountryItemBinding
 import br.com.fiap.countries.model.CountryModel
 
-class CountryAdapter : RecyclerView.Adapter<CountryAdapter.CharacterItemViewHolder>() {
+class CountryAdapter(
+    private val onDeleteListener: (CountryModel) -> Unit = {},
+    private val onUpdateListener: (CountryModel) -> Unit = {},
+) : RecyclerView.Adapter<CountryAdapter.CharacterItemViewHolder>() {
 
     private var countryList: MutableList<CountryModel> = mutableListOf()
 
@@ -41,12 +44,20 @@ class CountryAdapter : RecyclerView.Adapter<CountryAdapter.CharacterItemViewHold
         private val view: ViewCountryItemBinding
     ) : RecyclerView.ViewHolder(view.root) {
 
-        fun bindView(countryInfo: CountryModel, itemPosition: Int) {
-            view.countryNameValue.text = countryInfo.name
-            view.countryCapitalValue.text = countryInfo.capital
-            view.countryLanguageValue.text = countryInfo.language
-            view.countryLocationValue.text = countryInfo.location
-            view.countryCurrencyValue.text = countryInfo.currency
+        fun bindView(countryModel: CountryModel, itemPosition: Int) {
+            view.countryNameValue.text = countryModel.name
+            view.countryCapitalValue.text = countryModel.capital
+            view.countryLanguageValue.text = countryModel.language
+            view.countryLocationValue.text = countryModel.location
+            view.countryCurrencyValue.text = countryModel.currency
+
+            view.iconDelete.setOnClickListener {
+                onDeleteListener.invoke(countryModel)
+            }
+
+            view.iconUpdate.setOnClickListener {
+                onUpdateListener.invoke(countryModel)
+            }
         }
     }
 }

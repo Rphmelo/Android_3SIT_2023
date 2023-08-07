@@ -1,14 +1,25 @@
 <resources>
     <string name="app_name">Countries</string>
-    <string name="register_button_text">Cadastrar</string>
+    <!-- Strings used for fragments for navigation -->
     <string name="register_update_country_fragment_label">Cadastrar e Atualizar Países</string>
     <string name="countries_fragment_label">Lista de Países</string>
     <string name="back_to_countries_label">Voltar Para Lista</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="country_name_label">Nome</string>
     <string name="country_capital_label">Capital</string>
     <string name="country_language_label">Idioma</string>
     <string name="country_currency_label">Moeda</string>
     <string name="country_location_label">Localização</string>
     <string name="register_country_button_label">Cadastrar</string>
-    <string name="register_success_message">País %s cadastrado com sucesso!</string>
+    <string name="register_country_success_registered_message">País %s cadastrado com sucesso!</string>
+    <string name="register_country_success_updated_message">País %s alterado com sucesso!</string>
+    <string name="delete_dialog_title">Deletar País</string>
+    <string name="delete_dialog_message">Tem certeza que deseja deletar o país %s ?</string>
+    <string name="delete_cancel_label">Cancelar</string>
+    <string name="delete_continue_label">Deletar</string>
+    <string name="update_country_button_label">Atualizar</string>
+    <string name="register_country_success_deleted_message">País %s deletado com sucesso!</string>
 </resources>

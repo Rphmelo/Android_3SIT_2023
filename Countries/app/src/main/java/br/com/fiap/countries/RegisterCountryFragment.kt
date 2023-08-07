@@ -4,26 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import br.com.fiap.countries.SnackBarUtil.showSnackBar
 import br.com.fiap.countries.databinding.FragmentRegisterCountryBinding
 import br.com.fiap.countries.model.CountryModel
-import com.google.android.material.snackbar.Snackbar
 
 class RegisterCountryFragment : Fragment() {
 
-    lateinit var binding: FragmentRegisterCountryBinding
+    private lateinit var binding: FragmentRegisterCountryBinding
+
+    private val countryInfoArgument by lazy {
+        arguments?.getParcelable(COUNTRY_MODEL_BUNDLE_KEY) as? CountryModel
+    }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentRegisterCountryBinding.inflate(
-            inflater,
-            container,
-            false
-        )
+        binding = FragmentRegisterCountryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -37,38 +37,76 @@ class RegisterCountryFragment : Fragment() {
             findNavController().navigateUp()
         }
 
-        binding.registerUpdateCountryButton.setOnClickListener {
-            insertData()
+        binding.registerUpdateCountryButton.run {
+            text = if(countryInfoArgument == null) {
+                getString(R.string.register_country_button_label)
+            } else {
+                getString(R.string.update_country_button_label)
+            }
+
+            setOnClickListener {
+                insertUpdateData()
+            }
+        }
+
+        countryInfoArgument?.let { countryInfoArgument ->
+            binding.run {
+                textInputEditTextCountryName.setText(countryInfoArgument.name)
+                textInputEditTextCountryLanguage.setText(countryInfoArgument.language)
+                textInputEditTextCountryCurrency.setText(countryInfoArgument.currency)
+                textInputEditTextCountryLocation.setText(countryInfoArgument.location)
+                textInputEditTextCountryCapital.setText(countryInfoArgument.capital)
+            }
         }
     }
 
-    private fun insertData() {
-        val countryModel = CountryModel(
-            name = binding.textInputEditTextCountryName.text.toString(),
-            capital = binding.textInputEditTextCountryCapital.text.toString(),
-            currency = binding.textInputEditTextCountryCurrency.text.toString(),
-            language = binding.textInputEditTextCountryLanguage.text.toString(),
-            location = binding.textInputEditTextCountryLocation.text.toString()
-        )
-        CountriesDataSource.countriesList.add(countryModel)
-        clearForm()
-        showSnackBar(countryModel.name)
+    private fun insertUpdateData() {
+        binding.run {
+            val countryModel = CountryModel(
+                name = textInputEditTextCountryName.text.toString(),
+                language = textInputEditTextCountryLanguage.text.toString(),
+                currency = textInputEditTextCountryCurrency.text.toString(),
+                location = textInputEditTextCountryLocation.text.toString(),
+                capital = textInputEditTextCountryCapital.text.toString(),
+            )
+
+            countryInfoArgument?.let {
+                countryModel.id = it.id
+            }
+
+            CountriesDataSource.countriesList.add(countryModel)
+            clearForm()
+            showSnackBar(
+                binding.registerUpdateCountryButton,
+                getString(R.string.register_country_success_registered_message,
+                    countryModel.name
+                )
+            )
+
+        }
     }
 
     private fun clearForm() {
-        binding.textInputEditTextCountryName.text?.clear()
-        binding.textInputEditTextCountryCapital.text?.clear()
-        binding.textInputEditTextCountryCurrency.text?.clear()
-        binding.textInputEditTextCountryLanguage.text?.clear()
-        binding.textInputEditTextCountryLocation.text?.clear()
+        binding.run {
+            textInputEditTextCountryName.text?.clear()
+            textInputEditTextCountryLanguage.text?.clear()
+            textInputEditTextCountryCurrency.text?.clear()
+            textInputEditTextCountryLocation.text?.clear()
+            textInputEditTextCountryCapital.text?.clear()
+        }
     }
 
-    private fun showSnackBar(countryName: String) {
-        Snackbar.make(
-            binding.registerUpdateCountryButton,
-            getString(R.string.register_success_message, countryName),
-            Snackbar.LENGTH_SHORT
-        ).show()
+    private fun showRegisterMessage(message: String) {
+        showSnackBar(binding.buttonBackToCountries, message)
     }
 
+    companion object {
+        private const val COUNTRY_MODEL_BUNDLE_KEY = "COUNTRY_MODEL_BUNDLE_KEY"
+
+        fun buildBundle(countryModel: CountryModel?): Bundle? {
+            return countryModel?.let {
+                bundleOf(COUNTRY_MODEL_BUNDLE_KEY to it)
+            }
+        }
+    }
 }
