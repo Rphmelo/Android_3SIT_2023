@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.fiap.countries.databinding.ViewCountryItemBinding
-import br.com.fiap.countries.model.CountryModel
+import br.com.fiap.countries.data.CountryModel
 
 class CountryAdapter(
     private val onDeleteListener: (CountryModel) -> Unit = {},

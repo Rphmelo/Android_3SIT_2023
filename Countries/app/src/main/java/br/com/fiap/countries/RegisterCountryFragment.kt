@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import br.com.fiap.countries.SnackBarUtil.showSnackBar
 import br.com.fiap.countries.databinding.FragmentRegisterCountryBinding
-import br.com.fiap.countries.model.CountryModel
+import br.com.fiap.countries.data.CountryModel
 
 class RegisterCountryFragment : Fragment() {
 

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import br.com.fiap.countries.databinding.FragmentCountriesBinding
-import br.com.fiap.countries.model.CountryModel
+import br.com.fiap.countries.data.CountryModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class CountriesFragment : Fragment() {
