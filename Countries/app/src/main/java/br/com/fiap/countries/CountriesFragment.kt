@@ -1,11 +1,13 @@
 package br.com.fiap.countries
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import br.com.fiap.countries.data.AppDatabase
 import br.com.fiap.countries.databinding.FragmentCountriesBinding
 import br.com.fiap.countries.data.CountryModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -13,6 +15,11 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class CountriesFragment : Fragment() {
 
     lateinit var binding: FragmentCountriesBinding
+    private val appDb: AppDatabase? by lazy {
+        context?.let {
+            AppDatabase.getDatabase(it)
+        }
+    }
 
     private val countryAdapter by lazy {
         CountryAdapter(
@@ -48,6 +55,7 @@ class CountriesFragment : Fragment() {
     }
 
     private fun deleteCountry(countryModel: CountryModel) {
+        appDb?.countryDAO()?.delete(countryModel)
         SnackBarUtil.showSnackBar(
             binding.recyclerViewCountries,
             getString(R.string.register_country_success_deleted_message,
@@ -59,7 +67,9 @@ class CountriesFragment : Fragment() {
     }
 
     private fun getDataFromDatabase() {
-        countryAdapter.setData(CountriesDataSource.countriesList)
+        appDb?.countryDAO()?.select()?.let {
+            countryAdapter.setData(it)
+        }
     }
 
     private fun setupViews() {

@@ -8,12 +8,18 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import br.com.fiap.countries.SnackBarUtil.showSnackBar
+import br.com.fiap.countries.data.AppDatabase
 import br.com.fiap.countries.databinding.FragmentRegisterCountryBinding
 import br.com.fiap.countries.data.CountryModel
 
 class RegisterCountryFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterCountryBinding
+    private val appDb: AppDatabase? by lazy {
+        context?.let {
+            AppDatabase.getDatabase(it)
+        }
+    }
 
     private val countryInfoArgument by lazy {
         arguments?.getParcelable(COUNTRY_MODEL_BUNDLE_KEY) as? CountryModel
@@ -74,15 +80,25 @@ class RegisterCountryFragment : Fragment() {
                 countryModel.id = it.id
             }
 
-            CountriesDataSource.countriesList.add(countryModel)
-            clearForm()
-            showSnackBar(
-                binding.registerUpdateCountryButton,
-                getString(R.string.register_country_success_registered_message,
-                    countryModel.name
+            if(countryInfoArgument == null) {
+                appDb?.countryDAO()?.insert(countryModel)
+                showSnackBar(
+                    binding.registerUpdateCountryButton,
+                    getString(R.string.register_country_success_registered_message,
+                        countryModel.name
+                    )
                 )
-            )
+            } else {
+                appDb?.countryDAO()?.update(countryModel)
+                showSnackBar(
+                    binding.registerUpdateCountryButton,
+                    getString(R.string.register_country_success_updated_message,
+                        countryModel.name
+                    )
+                )
+            }
 
+            clearForm()
         }
     }
 

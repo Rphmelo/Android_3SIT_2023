@@ -9,7 +9,7 @@ import androidx.room.Update
 @Dao
 interface CountryDAO {
 
-    @Query("SELECT * FROM $COUNTRY_MODEL_TABLE_NAME ORDER BY name")
+    @Query("SELECT * FROM $COUNTRY_MODEL_TABLE_NAME ORDER BY capital")
     fun select(): List<CountryModel>
 
     @Insert
