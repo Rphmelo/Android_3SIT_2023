@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="pending">#959896</color>
+    <color name="completed">#07AB27</color>
+    <color name="progress">#FFFC33</color>
+
 </resources>
