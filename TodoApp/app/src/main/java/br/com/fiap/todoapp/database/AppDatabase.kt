@@ -39,11 +39,11 @@ abstract class AppDatabase: RoomDatabase() {
                     TaskModel(title = "Estudar música", status = TaskStatus.PENDING)
                 )
 
-//                if(INSTANCE?.taskDAO()?.selectAll()?.isEmpty() == true) {
-//                    taskList.forEach {
-//                        INSTANCE?.taskDAO()?.insert(it)
-//                    }
-//                }
+                if(INSTANCE?.taskDAO()?.selectAll()?.isEmpty() == true) {
+                    taskList.forEach {
+                        INSTANCE?.taskDAO()?.insert(it)
+                    }
+                }
                 return instance
             }
         }
