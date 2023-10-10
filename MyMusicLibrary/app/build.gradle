@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'br.com.fiap.todoapp'
+    namespace 'br.com.fiap.mymusiclibrary'
     compileSdk 33
 
     defaultConfig {
-        applicationId "br.com.fiap.todoapp"
+        applicationId "br.com.fiap.mymusiclibrary"
         minSdk 26
         targetSdk 33
         versionCode 1
@@ -39,13 +39,10 @@ android {
 
 dependencies {
 
-    def room_version = '2.4.3'
+    def room_version = '2.4.0-alpha04' //'2.3.0'
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
-
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
-    implementation 'androidx.activity:activity-ktx:1.7.2'
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'

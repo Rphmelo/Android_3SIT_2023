@@ -15,7 +15,7 @@ abstract class AppDatabase: RoomDatabase() {
 
     companion object {
         private var INSTANCE: AppDatabase? = null
-        fun getDatabase(context: Context): AppDatabase {
+        suspend fun getDatabase(context: Context): AppDatabase {
             if(INSTANCE != null) {
                 return INSTANCE!!
             } else {
@@ -23,8 +23,7 @@ abstract class AppDatabase: RoomDatabase() {
                     context,
                     AppDatabase::class.java,
                     TABLE_NAME
-                ).allowMainThreadQueries() //nao façam isso em casa
-                    .build()
+                ).build()
                 INSTANCE = instance
 
                 val taskList = listOf(

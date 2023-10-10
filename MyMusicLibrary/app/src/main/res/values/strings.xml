@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MyMusicLibrary</string>
+    <string name="fav_button_label">Favoritos</string>
+    <string name="no_fav_button_label">Não Favoritos</string>
+</resources>

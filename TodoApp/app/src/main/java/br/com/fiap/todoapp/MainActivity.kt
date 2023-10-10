@@ -5,10 +5,14 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.view.ViewCompat
 import androidx.core.view.children
+import androidx.lifecycle.lifecycleScope
 import br.com.fiap.todoapp.database.AppDatabase
 import br.com.fiap.todoapp.databinding.ActivityMainBinding
 import br.com.fiap.todoapp.databinding.ViewFilterItemBinding
 import com.google.android.material.chip.Chip
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
@@ -63,11 +67,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getTaskList() {
-        taskAdapter.setData(viewModel.selectAll())
+        lifecycleScope.launch {
+            taskAdapter.setData(viewModel.selectAll())
+        }
     }
 
     private fun getTaskFromStatus(status: TaskStatus) {
-        taskAdapter.setData(viewModel.selectByStatus(status))
+        lifecycleScope.launch {
+            taskAdapter.setData(viewModel.selectByStatus(status))
+        }
     }
 
     private fun getFilteredList() {

@@ -5,19 +5,19 @@ import androidx.lifecycle.AndroidViewModel
 import br.com.fiap.todoapp.database.AppDatabase
 import br.com.fiap.todoapp.database.TaskModel
 
-class TaskViewModel(application: Application) : AndroidViewModel(application) {
+class TaskViewModel(private val application: Application) : AndroidViewModel(application) {
 
     var selectedFilter: TaskStatus? = null
 
-    private val appDb by lazy {
-        AppDatabase.getDatabase(application.applicationContext)
+    suspend fun selectAll(): List<TaskModel> {
+        return AppDatabase.getDatabase(
+            application.applicationContext
+        ).taskDAO().selectAll()
     }
 
-    fun selectAll(): List<TaskModel> {
-        return appDb.taskDAO().selectAll()
-    }
-
-    fun selectByStatus(status: TaskStatus): List<TaskModel> {
-        return appDb.taskDAO().selectByStatus(status)
+    suspend fun selectByStatus(status: TaskStatus): List<TaskModel> {
+        return AppDatabase.getDatabase(
+            application.applicationContext
+        ).taskDAO().selectByStatus(status)
     }
 }
