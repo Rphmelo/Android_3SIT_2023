@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MarvelApp</string>
+    <string name="character_list_fragment_label">Character List Fragment</string>
+    <string name="character_detail_fragment_label">Character Detail Fragment</string>
+    <string name="character_name_label">Nome:</string>
+</resources>
