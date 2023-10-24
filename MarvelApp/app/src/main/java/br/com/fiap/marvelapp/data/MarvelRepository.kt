@@ -1,6 +1,8 @@
 package br.com.fiap.marvelapp.data
 
 import br.com.fiap.marvelapp.domain.MarvelCharacterModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import retrofit2.Response
 
 interface MarvelRepository {
@@ -8,7 +10,7 @@ interface MarvelRepository {
         timestamp: String,
         apikey: String,
         hash: String,
-        offset: Int
+        offset: Int = 1241
     ): Response<MarvelCharacterModel>
 }
 
@@ -22,12 +24,14 @@ class MarvelRepositoryImpl(
         hash: String,
         offset: Int
     ): Response<MarvelCharacterModel> {
-        return service.listCharacters(
-            timestamp,
-            apikey,
-            hash,
-            offset
-        )
+        return withContext(Dispatchers.IO) {
+            service.listCharacters(
+                timestamp,
+                apikey,
+                hash,
+                offset
+            )
+        }
     }
 
 }
